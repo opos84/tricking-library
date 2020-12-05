@@ -18,18 +18,29 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: Print Current Directory
         run: pwd
+        
       - name: List Files in Directory
         run: ls
+        
       - name: Check Dotnet CLI
         run: dotnet build
+        
       - name: List Filed in Directory
         run: ls TrickingLibrary.Api/ -R
+        
       - name: Check NPM CLI
         run: npm -v
+        
       - name: Npm ci
         working-directory: ./web-client
         run: npm ci
+        
       - name: Build client app
         working-directory: ./web-client
         run: npm run build
+        
+      - name: List Files .nuxt directory
+        working-directory: ./web-client
+        run: ls .nuxt/ -R
+        
       
