@@ -100,12 +100,5 @@ export default {
         }
       })
   }
-  // ,
-  // created() {
-  //   Axios.get('http://localhost:5000/api/home')
-  //   .then(({data}) => {
-  //     this.message = data;
-  //   })
-  // }
 }
 </script>
