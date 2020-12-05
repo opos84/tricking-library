@@ -21,5 +21,8 @@ jobs:
       - name: List Filed in Directory
         run: ls TrickingLibrary.Api/ -R
       - name: Check NPM CLI
-        run: npm -v
+        run: npm -v 
+      - name: Build client app
+        working-directory: ./web-client
+        run: npm run build
       
