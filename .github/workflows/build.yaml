@@ -12,6 +12,10 @@ jobs:
 #        with: 
 #          who-to-greet: 'Mona the O'
 #        id: hello
+      - uses: actions/setup-node@v1
+          with:
+            node-version: 12
+            registry-url: 'https://registry.npmjs.org'
       - name: Print Current Directory
         run: pwd
       - name: List Files in Directory
@@ -21,7 +25,10 @@ jobs:
       - name: List Filed in Directory
         run: ls TrickingLibrary.Api/ -R
       - name: Check NPM CLI
-        run: npm -v 
+        run: npm -v
+      - name: Npm ci
+        working-directory: ./web-client
+        run: npm ci
       - name: Build client app
         working-directory: ./web-client
         run: npm run build
