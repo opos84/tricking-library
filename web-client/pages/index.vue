@@ -1,10 +1,6 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
-      </div>
           <div v-if="tricks">
             <p v-for="t in tricks">
               {{t.name}}
@@ -16,6 +12,8 @@
             <v-btn @click="saveTrick">Save Tricks</v-btn>
           </div>
 
+
+      <v-file-input @change="handleFile"></v-file-input>
 
 <div>
   {{message}}
@@ -32,17 +30,10 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-import Axios from "axios";
 import {mapState, mapActions, mapMutations} from 'vuex';
-
+import Axios from "axios";
 
 export default {
-  components: {
-    Logo,
-    VuetifyLogo
-  },
   data: () =>(
     {
       trickName: ""
@@ -67,6 +58,19 @@ export default {
     async saveTrick(){
       await this.createTrick({trick: {name:this.trickName}});
       this.trickName="";
+    },
+    async handleFile(file){
+      if(!file){
+        return;
+      }
+      console.log(file);
+
+      const form = new FormData();
+      form.append("video", file);
+
+     const result = await Axios.post("http://localhost:5000/api/videos", form,
+       );
+     console.log("Result", result);
     }
   },
   // async fetch(){
