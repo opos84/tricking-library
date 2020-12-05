@@ -16,3 +16,8 @@ jobs:
         run: pwd
       - name: List Files in Directory
         run: ls
+      - name: Check Dotnet CLI
+        run: dotnet
+      - name: Check NPM CLI
+        run: npm
+      
